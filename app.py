@@ -1,7 +1,9 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,flash,session,url_for
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "adkasdkljaskldjklajdklajsdkljaklsdjasd"
 @app.route("/")
 def index():
+    flash(" this an error message this an error message this an error message this an error message","info")
     return render_template("index.html")
 @app.route("/registration")
 def registrationPage():

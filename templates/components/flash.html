@@ -1,0 +1,136 @@
+<!-- Flash Message Alert Box -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="fixed top-28 left-1/2 transform -translate-x-1/2 w-full max-w-xl px-4 z-50">
+  {% for category, message in messages %}
+  <div id="flash-message-{{ loop.index }}" class="relative flex flex-col items-start mb-4 px-4 py-3 rounded-lg shadow-xl 
+              bg-{% if category == 'success' %}green-500{% elif category == 'warning' %}yellow-500{% elif category == 'error' %}red-500{% else %}blue-500{% endif %}
+              text-white text-sm sm:text-base md:text-lg transition-all duration-300 transform scale-100">
+    
+    <!-- Close Button -->
+    <div class="absolute right-2 top-2 cursor-pointer text-lg font-bold" 
+         onclick="document.querySelector('#flash-message-{{ loop.index }}').remove()">
+      ❌
+    </div>
+
+    <!-- Category Title with Icons -->
+    <div class="flex items-center space-x-2 font-bold mb-1">
+      {% if category == 'success' %}
+        <span>✅</span>
+      {% elif category == 'warning' %}
+        <span>⚠️</span>
+      {% elif category == 'error' %}
+        <span>❌</span>
+      {% else %}
+        <span>ℹ️</span>
+      {% endif %}
+      <span>{{ category.capitalize() }}</span>
+    </div>
+
+    <!-- Message Content with Typing Effect -->
+    <div class="message-content w-full overflow-auto max-h-48">
+      <p id="typing-effect-{{ loop.index }}" class="typing-effect text-sm sm:text-base md:text-lg leading-snug"></p>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const typingElement = document.querySelector('#typing-effect-{{ loop.index }}');
+          const messageText = `{{ message }}`;
+          const typingDuration = 3000; // 3 seconds for typing effect
+          const pauseDuration = 1000; // 1 second for the message to stay after typing
+          let index = 0;
+
+          function typeEffect() {
+            if (index < messageText.length) {
+              typingElement.textContent += messageText.charAt(index);
+              index++;
+              setTimeout(typeEffect, typingDuration / messageText.length); // Adjust typing speed based on message length
+            }
+          }
+
+          typeEffect();
+        });
+      </script>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="absolute bottom-0 left-0 w-full h-1 bg-white opacity-70" id="progress-bar-{{ loop.index }}"></div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+<!-- JavaScript to handle message disappearance -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const flashMessages = document.querySelectorAll('[id^="flash-message-"]');
+
+    flashMessages.forEach((flashMessage, index) => {
+      const progressBar = document.querySelector(`#progress-bar-${index + 1}`);
+      const typingDuration = 3000; // 3 seconds for typing effect
+      const messageDuration = 4000; // 4 seconds total (3 seconds typing + 1 second pause)
+      const interval = 40; // Update interval for progress bar in ms
+      let progress = 0;
+
+      // Animate progress bar
+      const progressInterval = setInterval(() => {
+        progress += (interval / messageDuration) * 100;
+        if (progressBar) {
+          progressBar.style.width = `${progress}%`;
+        }
+        if (progress >= 100) {
+          clearInterval(progressInterval);
+        }
+      }, interval);
+
+      // Fade out and remove flash message after the total duration
+      setTimeout(() => {
+        flashMessage.classList.add('opacity-0', 'scale-90');
+        setTimeout(() => {
+          flashMessage.remove();
+        }, 300); // Match fade-out animation duration
+      }, messageDuration); // Keep the message for 4 seconds (3 seconds typing + 1 second visible)
+    });
+  });
+</script>
+
+<!-- CSS Styles for Responsiveness, Animations, and Typing Effect -->
+<style>
+  /* Ensure text wraps and long messages don't overflow */
+  .message-content {
+    max-width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-height: 12rem; /* Set max height for scrolling long text */
+    overflow-y: auto; /* Add vertical scroll for long content */
+  }
+
+  .message-text {
+    font-size: clamp(0.875rem, 1vw, 1rem); /* Responsive font size */
+    line-height: 1.5; /* Improve readability */
+  }
+
+  /* Typing effect animation */
+  .typing-effect {
+    display: inline-block;
+    white-space: normal; /* Allow text wrapping */
+    overflow: hidden;
+    animation: none; /* Disable CSS-based animation for compatibility with JavaScript typing */
+  }
+
+  /* Cursor animation for typing effect */
+  @keyframes typing-cursor {
+    0%, 100% {
+      border-right-color: transparent;
+    }
+    50% {
+      border-right-color: white;
+    }
+  }
+
+  .typing-effect::after {
+    content: '';
+    border-right: 2px solid white; /* Blinking cursor */
+    animation: typing-cursor 0.8s steps(2) infinite;
+  }
+</style>

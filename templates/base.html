@@ -30,12 +30,16 @@
   </style>
 </head>
 <body class="bg-gray-100">
-    {% include 'components/navbar.html' %}
+  {% include 'components/navbar.html' %}
+
   <!-- Main Content -->
   <main>
+
+  {% include 'components/flash.html' %}
     {% block content %}
     {% endblock %}
   </main>
+
   {% include 'components/footer.html' %}
   <script>
     // Mobile Menu Toggle
@@ -48,5 +52,4 @@
   </script>
   <script src="https://kit.fontawesome.com/756158682e.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
