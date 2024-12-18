@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Registration Page{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg mx-4 transition hover:shadow-green-500/50">
+    <!-- Heading with Typing Effect -->
+    <h1 class="text-3xl font-bold text-blue-500 uppercase text-center mb-6 relative overflow-hidden">
+      <span class="block w-full whitespace-nowrap typing">Register for Typetrek</span>
+    </h1>
+
+    <form action="/submit-registration" method="POST" class="space-y-6">
+      <!-- Full Name -->
+      <div>
+        <label for="full-name" class="block text-sm font-bold text-blue-500 uppercase mb-1">Full Name</label>
+        <input type="text" id="full-name" name="full-name" placeholder="Enter your full name"
+          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg bg-gray-50 text-sm text-gray-700 focus:ring-4 focus:ring-green-200 focus:outline-none focus:border-green-400"
+          required />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-bold text-blue-500 uppercase mb-1">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email"
+          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg bg-gray-50 text-sm text-gray-700 focus:ring-4 focus:ring-green-200 focus:outline-none focus:border-green-400"
+          required />
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-sm font-bold text-blue-500 uppercase mb-1">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password"
+          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg bg-gray-50 text-sm text-gray-700 focus:ring-4 focus:ring-green-200 focus:outline-none focus:border-green-400"
+          required />
+      </div>
+
+      <!-- Confirm Password -->
+      <div>
+        <label for="confirm-password" class="block text-sm font-bold text-blue-500 uppercase mb-1">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password"
+          class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg bg-gray-50 text-sm text-gray-700 focus:ring-4 focus:ring-green-200 focus:outline-none focus:border-green-400"
+          required />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit"
+        class="w-full py-3 text-white bg-blue-500 rounded-lg font-semibold uppercase hover:bg-blue-600 transition duration-300">
+        Register
+      </button>
+    </form>
+
+    <!-- Redirect Link -->
+    <div class="text-center mt-6">
+      <p class="text-sm text-gray-500">
+        Already have an account? 
+        <a href="{{url_for('loginPage')}}" class="font-bold text-blue-500 hover:text-blue-600">Login here</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(20) 1s forwards;
+  }
+
+  .hover\:shadow-green-500\/50:hover {
+    box-shadow: 0 4px 8px rgba(24, 138, 50, 0.5);
+  }
+</style>
+{% endblock %}

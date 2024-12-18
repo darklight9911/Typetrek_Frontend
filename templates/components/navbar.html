@@ -1,128 +1,126 @@
 <style>
-    /* Typetrek logo style */
-    .typetrek-logo {
-      font-family: 'Courier New', Courier, monospace; /* Retro digital typewriter feel */
-      font-size: 2.5rem; /* Larger size for emphasis */
-      font-weight: bold;
-      color: #4CAF50; /* Vibrant green, giving a tech vibe */
-      text-transform: uppercase; /* Make it look like a command or keypress */
-      letter-spacing: 2px; /* Slight space between letters for readability */
-      position: relative;
-      display: inline-block;
+  /* Typetrek logo style */
+  .typetrek-logo {
+    font-family: 'Courier New', Courier, monospace; /* Retro digital typewriter feel */
+    font-size: 2.5rem; /* Larger size for emphasis */
+    font-weight: bold;
+    color: #4CAF50; /* Vibrant green, giving a tech vibe */
+    text-transform: uppercase; /* Make it look like a command or keypress */
+    letter-spacing: 2px; /* Slight space between letters for readability */
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Add a typing cursor effect */
+  .typetrek-logo::after {
+    content: "|"; /* The typing cursor */
+    position: absolute;
+    left: 100%; /* Position the cursor directly after the text */
+    top: 0;
+    margin-left: 10px; /* Adds space between text and cursor */
+    color: white; /* Change cursor color to white */
+    animation: blink 0.7s step-end infinite; /* Blinking cursor effect */
+  }
+
+  /* Blinking animation */
+  @keyframes blink {
+    50% {
+      opacity: 0;
     }
-  
-    /* Add a typing cursor effect */
-    .typetrek-logo::after {
-      content: "|"; /* The typing cursor */
-      position: absolute;
-      left: 100%; /* Position the cursor directly after the text */
-      top: 0;
-      margin-left: 10px; /* Adds space between text and cursor */
-      color: white; /* Change cursor color to white */
-      animation: blink 0.7s step-end infinite; /* Blinking cursor effect */
-    }
-  
-    /* Blinking animation */
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-  
-    /* Hover effect with a cool underline animation */
-    .typetrek-logo:hover {
-      color: #388e3c; /* Slightly darker green on hover */
-      text-decoration: underline wavy #388e3c; /* Wavy underline on hover */
-    }
-  
-    /* General button and keycap styles */
-    .keycap, .btn {
-      font-family: 'Courier New', Courier, monospace;
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 2px solid #ddd;
-      border-radius: 6px;
-      background-color: #f3f4f6;
-      color: #1e293b;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transform: translateY(0);
-      transition: all 0.2s ease-in-out;
-      text-transform: uppercase; /* Makes the text look like keyboard keys */
-      cursor: pointer; /* Adds cursor pointer to indicate clickable items */
-    }
-  
-    /* Hover effect */
-    .keycap:hover, .btn:hover {
-      background-color: #e5e7eb;
-      transform: translateY(-4px); /* Add a subtle lift effect */
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increase shadow for hover effect */
-    }
-  
-    /* Active state when clicked */
-    .keycap:active, .btn:active {
-      background-color: #d1d5db; /* Darker shade when clicked */
-      transform: translateY(2px); /* Slight push down effect on click */
-      box-shadow: none; /* Remove shadow on click for realistic keypress look */
-    }
-  
-    /* Button specific styles */
-    .btn-primary {
-      background-color: #4CAF50; /* Green button for Join Contest */
-      border-color: #4CAF50;
-    }
-  
-    .btn-primary:hover {
-      background-color: #45a049; /* Darker green on hover */
-      border-color: #45a049;
-    }
-  
-    .btn-primary:active {
-      background-color: #3e8e41; /* Darker shade when clicked */
-      border-color: #3e8e41;
-    }
-  </style>
-  
-  <nav class="bg-primary text-white">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Typetrek Logo -->
-      <a href="#" class="typetrek-logo">
-        Typetrek
+  }
+
+  /* Hover effect with color change */
+  .typetrek-logo:hover {
+    color: #388e3c; /* Slightly darker green on hover */
+  }
+
+  /* General button and keycap styles */
+  .keycap, .btn {
+    font-family: 'Courier New', Courier, monospace;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background-color: #f3f4f6;
+    color: #1e293b;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase; /* Makes the text look like keyboard keys */
+    cursor: pointer; /* Adds cursor pointer to indicate clickable items */
+  }
+
+  /* Hover effect */
+  .keycap:hover, .btn:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-4px); /* Add a subtle lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Increase shadow for hover effect */
+  }
+
+  /* Active state when clicked */
+  .keycap:active, .btn:active {
+    background-color: #d1d5db; /* Darker shade when clicked */
+    transform: translateY(2px); /* Slight push down effect on click */
+    box-shadow: none; /* Remove shadow on click for realistic keypress look */
+  }
+
+  /* Button specific styles */
+  .btn-primary {
+    background-color: #4CAF50; /* Green button for Join Contest */
+    border-color: #4CAF50;
+  }
+
+  .btn-primary:hover {
+    background-color: #45a049; /* Darker green on hover */
+    border-color: #45a049;
+  }
+
+  .btn-primary:active {
+    background-color: #3e8e41; /* Darker shade when clicked */
+    border-color: #3e8e41;
+  }
+</style>
+
+<nav class="bg-primary text-white">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Typetrek Logo -->
+    <a href="#" class="typetrek-logo">
+      Typetrek
+    </a>
+
+    <!-- Navigation Links -->
+    <div class="hidden md:flex space-x-6">
+      <a href="{{url_for('index')}}" class="keycap hover:text-accent">Home</a>
+      <a href="#leaderboard" class="keycap hover:text-accent">Leaderboard</a>
+      <a href="#about" class="keycap hover:text-accent">About</a>
+      <a href="#contact" class="keycap hover:text-accent">Contact</a>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="space-x-4">
+      <a href="#join" class="btn btn-primary bg-accent text-white py-2 px-4 rounded-md hover:bg-green-600">
+        Join Contest
       </a>
-  
-      <!-- Navigation Links -->
-      <div class="hidden md:flex space-x-6">
-        <a href="#home" class="keycap hover:text-accent">Home</a>
-        <a href="#leaderboard" class="keycap hover:text-accent">Leaderboard</a>
-        <a href="#about" class="keycap hover:text-accent">About</a>
-        <a href="#contact" class="keycap hover:text-accent">Contact</a>
-      </div>
-  
-      <!-- Action Buttons -->
-      <div class="space-x-4">
-        <a href="#join" class="btn btn-primary bg-accent text-white py-2 px-4 rounded-md hover:bg-green-600">
-          Join Contest
-        </a>
-        <a href="/login" class="keycap">Enter</a>
-        <a href="/register" class="keycap">Insert</a>
-      </div>
-  
-      <!-- Mobile Menu Icon -->
-      <div class="md:hidden flex items-center">
-        <button id="menu-toggle" class="text-white focus:outline-none">
-          <span class="text-lg">Menu</span>
-        </button>
-      </div>
+      <a href="{{url_for('loginPage')}}" class="keycap">Enter</a>
+      <a href="{{url_for('registrationPage')}}" class="keycap">Insert</a>
     </div>
-  
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden">
-      <a href="#home" class="block py-2 px-4 keycap hover:bg-gray-700">Home</a>
-      <a href="#leaderboard" class="block py-2 px-4 keycap hover:bg-gray-700">Leaderboard</a>
-      <a href="#about" class="block py-2 px-4 keycap hover:bg-gray-700">About</a>
-      <a href="#contact" class="block py-2 px-4 keycap hover:bg-gray-700">Contact</a>
-      <a href="/login" class="block py-2 px-4 keycap hover:bg-gray-700">Login</a>
-      <a href="/register" class="block py-2 px-4 keycap hover:bg-gray-700">Register</a>
+
+    <!-- Mobile Menu Icon -->
+    <div class="md:hidden flex items-center">
+      <button id="menu-toggle" class="text-white focus:outline-none">
+        <span class="text-lg">Menu</span>
+      </button>
     </div>
-  </nav>
-  
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <a href="{{url_for('index')}}" class="block py-2 px-4 keycap hover:bg-gray-700">Home</a>
+    <a href="#leaderboard" class="block py-2 px-4 keycap hover:bg-gray-700">Leaderboard</a>
+    <a href="#about" class="block py-2 px-4 keycap hover:bg-gray-700">About</a>
+    <a href="#contact" class="block py-2 px-4 keycap hover:bg-gray-700">Contact</a>
+    <a href="{{url_for('loginPage')}}" class="block py-2 px-4 keycap hover:bg-gray-700">Login</a>
+    <a href="{{url_for('registrationPage')}}" class="block py-2 px-4 keycap hover:bg-gray-700">Register</a>
+  </div>
+</nav>

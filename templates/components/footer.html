@@ -1,8 +1,46 @@
-<footer class="bg-primary text-white mt-10">
+<style>
+    /* Footer Styling */
+    footer {
+      font-family: 'Courier New', Courier, monospace; /* Consistent font with navbar */
+      letter-spacing: 1px; /* Small letter-spacing to match tech theme */
+      text-transform: uppercase; /* Uppercase letters for a bold feel */
+    }
+  
+    footer h3 {
+      font-weight: bold;
+      font-size: 1.25rem; /* Slightly smaller font size for section titles */
+      color: #4CAF50; /* Use vibrant green for titles */
+      margin-bottom: 1rem;
+    }
+  
+    footer a {
+      color: #ffffff; /* Default link color */
+      transition: color 0.3s ease; /* Smooth color transition on hover */
+    }
+  
+    footer a:hover {
+      color: #388e3c; /* Green hover effect for links */
+    }
+  
+    /* Quick Links */
+    footer .quick-links ul li {
+      margin-top: 0.5rem;
+    }
+  
+    footer .contact-info ul li {
+      margin-top: 0.5rem;
+    }
+  
+    footer .social-media ul li {
+      margin-top: 0.5rem;
+    }
+  </style>
+  
+  <footer class="bg-primary text-white mt-10">
     <div class="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Quick Links -->
-      <div>
-        <h3 class="font-bold text-lg">Quick Links</h3>
+      <div class="quick-links">
+        <h3>Quick Links</h3>
         <ul class="mt-4 space-y-2">
           <li><a href="#home" class="hover:text-accent">Home</a></li>
           <li><a href="#leaderboard" class="hover:text-accent">Leaderboard</a></li>
@@ -10,24 +48,24 @@
           <li><a href="#contact" class="hover:text-accent">Contact</a></li>
         </ul>
       </div>
-
+  
       <!-- Contact Information -->
-      <div>
-        <h3 class="font-bold text-lg">Contact Us</h3>
+      <div class="contact-info">
+        <h3>Contact Us</h3>
         <p class="mt-4">Email: <a href="mailto:info@typingcontest.com" class="hover:text-accent">info@typingcontest.com</a></p>
         <p class="mt-2">Phone: +123 456 7890</p>
-        <p class="mt-2">Address: 123 Typing Street, Code City</p>
+        <p class="mt-2">Address: Daffodil International University, Daffodil Smart City</p>
       </div>
-
+  
       <!-- Social Media -->
-      <div>
-        <h3 class="font-bold text-lg">Follow Us</h3>
+      <div class="social-media">
+        <h3>Follow Us</h3>
         <ul class="mt-4 space-y-2">
-          <li><a href="#" class="hover:text-accent">Twitter</a></li>
           <li><a href="#" class="hover:text-accent">Facebook</a></li>
           <li><a href="#" class="hover:text-accent">Instagram</a></li>
-          <li><a href="#" class="hover:text-accent">LinkedIn</a></li>
+          <li><a href="#" class="hover:text-accent">Youtube</a></li>
         </ul>
       </div>
     </div>
   </footer>
+  
