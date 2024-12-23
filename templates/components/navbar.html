@@ -85,11 +85,11 @@
 <nav class="bg-primary text-white">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <!-- Typetrek Logo -->
-    <a href="#" class="typetrek-logo">
+    <a href="{{url_for('index')}}" class="typetrek-logo">
       Typetrek
     </a>
 
-    <!-- Navigation Links -->
+    <!-- Desktop Navigation Links -->
     <div class="hidden md:flex space-x-6">
       <a href="{{url_for('index')}}" class="keycap hover:text-accent">Home</a>
       <a href="#leaderboard" class="keycap hover:text-accent">Leaderboard</a>
@@ -98,29 +98,51 @@
     </div>
 
     <!-- Action Buttons -->
-    <div class="space-x-4">
+    <div class="hidden md:flex space-x-4">
       <a href="#join" class="btn btn-primary bg-accent text-white py-2 px-4 rounded-md hover:bg-green-600">
         Join Contest
       </a>
+      {% if session.get('user_logged_in') == False%}
       <a href="{{url_for('loginPage')}}" class="keycap">Enter</a>
       <a href="{{url_for('registrationPage')}}" class="keycap">Insert</a>
+    {% else %}
+    <a href="{{url_for('logout')}}" class="keycap" style="background-color: rgb(182, 45, 45)">Escape</a>
+ {% endif %}
     </div>
 
     <!-- Mobile Menu Icon -->
     <div class="md:hidden flex items-center">
       <button id="menu-toggle" class="text-white focus:outline-none">
-        <span class="text-lg">Menu</span>
+        <span class="text-lg">☰</span> <!-- Hamburger Icon -->
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden">
-    <a href="{{url_for('index')}}" class="block py-2 px-4 keycap hover:bg-gray-700">Home</a>
-    <a href="#leaderboard" class="block py-2 px-4 keycap hover:bg-gray-700">Leaderboard</a>
-    <a href="#about" class="block py-2 px-4 keycap hover:bg-gray-700">About</a>
-    <a href="#contact" class="block py-2 px-4 keycap hover:bg-gray-700">Contact</a>
-    <a href="{{url_for('loginPage')}}" class="block py-2 px-4 keycap hover:bg-gray-700">Login</a>
-    <a href="{{url_for('registrationPage')}}" class="block py-2 px-4 keycap hover:bg-gray-700">Register</a>
-  </div>
-</nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden">
+      <div class="space-y-2 py-2 border-t border-gray-700">
+        <a href="{{url_for('index')}}" class="block py-2 px-4 keycap hover:bg-gray-700">Home</a>
+        <a href="#leaderboard" class="block py-2 px-4 keycap hover:bg-gray-700">Leaderboard</a>
+        <a href="#about" class="block py-2 px-4 keycap hover:bg-gray-700">About</a>
+        <a href="#contact" class="block py-2 px-4 keycap hover:bg-gray-700">Contact</a>
+      </div>
+      <div class="mt-4 space-y-2 border-t border-gray-700 pt-2">
+        <a href="#join" class="btn btn-primary bg-accent text-white py-2 px-4 rounded-md hover:bg-green-600 block text-center">
+          Join Contest
+        </a>
+        <a href="{{url_for('loginPage')}}" class="block py-2 px-4 keycap text-center hover:bg-gray-700">Enter</a>
+        <a href="{{url_for('registrationPage')}}" class="block py-2 px-4 keycap text-center hover:bg-gray-700">Insert</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    // JavaScript for Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
